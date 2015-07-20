@@ -1,6 +1,7 @@
 <?php
+
 session_start();
-        
+
 $error = array();
 $palpite = $_SESSION['email'] . ';';//dados dos usuários que já palpitaram que será inserido no arquivo
 include_once './filhos.php';
@@ -8,7 +9,7 @@ include_once './filhos.php';
 //valida os campos
 for ($i=1;$i<17;$i++) {
     $filho = 'filho' .$i;
-    if (!isset($_POST[$filho])) {
+    if (!isset($_POST[$filho]) || strlen($_POST[$filho]) < 1) {
         $error[] = "Você não selecionou o pai para o Filho " . $i;
     }
 }
@@ -24,13 +25,13 @@ for ($i=1;$i<17;$i++) {
 //        if ($linha==null) {
 //            break;
 //        }
-//        
+//
 //        $l = explode(';', $linha);
 //        if ($_SESSION['email'] == $l[0]) {
 //            $error[] = 'Você já deu o seu palpite!';
 //        }
 //    }
-//    fclose($arquivo);    
+//    fclose($arquivo);
 //}
 
 if (count($error)>= 1) {
@@ -40,7 +41,7 @@ if (count($error)>= 1) {
     }
     echo "</div>";
 } else {
-    
+
     $cont = 0;
     foreach ($_POST as $resposta => $value) {
 //        echo $resposta;  //chave
@@ -48,13 +49,14 @@ if (count($error)>= 1) {
         foreach ($filhos as $filho) {
             if ($filho['pai'] ==  $value && $filho['id'] == $resposta) {
                 $cont++;
-            }            
+            }
+            $palpite .= trim(filter_input(INPUT_POST, $filho['id'], FILTER_SANITIZE_STRING)) . ';';
         }
 //        $palpite .= $value . ';';
-        $palpite .= trim(filter_input(INPUT_POST, $filho['id'], FILTER_SANITIZE_STRING)) . ';';
+
     }
-    
-    
+
+
     $arquivo = fopen('palpites.csv','a');
     if ($arquivo) {
         $palpite .= $cont;
@@ -64,9 +66,8 @@ if (count($error)>= 1) {
         echo "<div class='alert alert-success'>";
         echo "Palpite enviado com sucesso!<br />";
         echo "Você teve " . "<strong>" . $cont . "</strong> acerto(s)" ;
-        echo "</div>";  	
+        echo "</div>";
 	fclose($arquivo);
-    }     
-    
-}
+    }
 
+}
