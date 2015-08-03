@@ -56,7 +56,7 @@
         .lbl-vertical-align { margin-top: 6em; float: right !important;}
         .div-vertical-align {top: 5em; left: -1em;}
         .text-align {text-align: center;}
-        /*.filhos { padding-top: 1em;}*/
+        /*.filhos { padding-top: 22em;}*/
     }
 
     </style>
@@ -170,6 +170,7 @@ include_once './pais.php';
                         <!-- /filhos-->
 
                     <?php   }?>
+
                         <div class="filhos">
                             <div class="row " style="">
                                 <div class="col-sm-12 text-align">
@@ -212,5 +213,8 @@ include_once './pais.php';
             <div id="fim"></div>
         </div>
     </div>
+                        <div style="height: 800px;">
+                            
+                        </div>        
 </body>
 </html>
