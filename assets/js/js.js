@@ -31,6 +31,7 @@ function fazerScroll() {
 
 $(function(){
     (window.innerWidth > 768)?'':$('.filhos').height(window.innerHeight);
+    $("#theEnd").hide();
 
     $('#game select').select2({
       language:'pt-BR',
@@ -100,8 +101,12 @@ $(function(){
     var posicao = $(this).parent().parent().parent().next().position().top;
     var teste = function(){
         return ($("#" + filho).length == 1)?$("#" + filho).select2('open'):$("#btn_palpitar").focus();
-    }
-    fazerScroll2(posicao,800, teste);
+    };
+    console.log(filho);
+    
+    //verifica se é o ultimo filho | questiona o envio
+    (filho === 'filho18' || isComplete())? fazerScroll2($("#theEnd").show().position().top,800, function(){}): fazerScroll2(posicao,800, teste);
+    
 
     });
 
@@ -109,6 +114,28 @@ $(function(){
     $('.filhos label img').on('click', function(){
        var filho = $(this).parent().attr('for');
        $("#" + filho).select2('open');
-    })
+    });
+    
+    $("#btnNao").on('click', function(){
+      fazerScroll2($("#filho1").position().top,800);
+      $("#filho1").select2('open');
+    });
 
   });
+
+//
+//var select = $('select');
+//var tamanho = select.length;
+//for(var i = 0; i < tamanho; i++){
+//  if (select[i].value == '') {
+//   var filho = "#filho" +(i+1);
+//   var posicao = $(filho).parent().parent().parent().position().top;
+//
+//   fazerScroll2(posicao,800);
+// 
+//   $(filho).select2('open');
+//
+//   break;
+//
+//  }
+//}

@@ -70,6 +70,12 @@ include_once './filhos.php';
 include_once './pais.php';
 
 
+    
+    
+
+    
+//    echo $client  = @$_SERVER['HTTP_CLIENT_IP'];
+//    echo $forward = @$_SERVER['HTTP_X_FORWARDED_FOR'];
 ?>
 
     <div class="row responsive-utilities-test visible-on" style="position: fixed; top: 0; right: 0; z-index: 1030; width: 100px; height: 100px;">
@@ -143,7 +149,13 @@ include_once './pais.php';
 
 
 
-                <div id="msg"></div>
+                <div id="msg" >
+                    <div class="text-center">
+                        <h1 style="font-size: 10em; color: #ff3333">Parabéns!</h1>
+                        <img src="./assets/img/ranking.png" alt="">
+                        <h2 style="font-size: 3em; color: #008000;">Você foi muito bem, acertou x </h2>
+                    </div>
+                </div>
                 <!-- formulario -->
                 <form action="javascript: func()" method="post" id="formFilho" class="form-horizontal">
                     <!-- game -->
@@ -177,7 +189,7 @@ include_once './pais.php';
 
                     <?php   }?>
 
-                        <div class="filhos">
+                        <div class="filhos" id="theEnd">
                             <div class="row " style="">
                                 <div class="col-sm-12 text-align">
                                     <div class="thumbnail">
@@ -196,7 +208,7 @@ include_once './pais.php';
                                         </p>
                                         <br>
                                         <p>
-                                            <a href="#" class="btn btn-default  col-xs-12 col-sm-12" role="button">Não</a>
+                                            <a  class="btn btn-default  col-xs-12 col-sm-12" id="btnNao" role="button">Não, vou conferir!</a>
                                         </p>
                                       </div>
                                     </div>
@@ -207,6 +219,7 @@ include_once './pais.php';
                                 </div> -->
                             </div>
                         </div>
+                        <div style="height: 1000px;"></div> 
                     <!-- game -->
 
                 </form>
@@ -219,8 +232,6 @@ include_once './pais.php';
             <div id="fim"></div>
         </div>
     </div>
-                        <div style="height: 800px;">
-                            teste
-                        </div>        
+      
 </body>
 </html>

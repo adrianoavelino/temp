@@ -2,8 +2,31 @@
 
 session_start();
 
+
+/**
+ * Verifica o IP do usuário verificando o proxy
+ * @return string
+ * fonte: http://stackoverflow.com/questions/1420381/how-can-i-get-the-mac-and-the-ip-address-of-a-connected-client-in-php
+ */
+function kh_getUserIP(){
+    $client  = @$_SERVER['HTTP_CLIENT_IP'];
+    $forward = @$_SERVER['HTTP_X_FORWARDED_FOR'];
+    $remote  = $_SERVER['REMOTE_ADDR'];
+
+    if(filter_var($client, FILTER_VALIDATE_IP)){
+        $ip = $client;
+    }elseif(filter_var($forward, FILTER_VALIDATE_IP)){
+        $ip = $forward;
+    }else{
+        $ip = $remote;
+    }
+    return $ip;
+}
+    
 $error = array();
 $palpite = $_SESSION['email'] . ';';//dados dos usuários que já palpitaram que será inserido no arquivo
+$ip = kh_getUserIP();
+
 include_once './filhos.php';
 
 //valida os campos
@@ -49,17 +72,16 @@ if (count($error)>= 1) {
         foreach ($filhos as $filho) {
             if ($filho['pai'] ==  $value && $filho['id'] == $resposta) {
                 $cont++;
-            }
+            }            
             $palpite .= trim(filter_input(INPUT_POST, $filho['id'], FILTER_SANITIZE_STRING)) . ';';
         }
-//        $palpite .= $value . ';';
 
     }
 
 
     $arquivo = fopen('palpites.csv','a');
     if ($arquivo) {
-        $palpite .= $cont;
+        $palpite .= $cont . ';'. $ip;
 	if (!fwrite($arquivo, "\n" .$palpite)) {
             die('Não foi possível atualizar o arquivo.');
         }
