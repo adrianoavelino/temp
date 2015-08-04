@@ -23,7 +23,10 @@
 
     }
 
-
+    .page-header{
+        margin: auto auto -1.3em;
+        text-align: center;
+    }
 
     /*sm*/
     @media (min-width: 768px) and (max-width: 992px) {
@@ -91,7 +94,10 @@ include_once './pais.php';
 
                 <!-- header -->
                 <div class="page-header">
-                  <h1>Lorem ipsum dolor sit amet.<br /> <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam, magnam?</small></h1>
+                  <h1>
+                      Quem é o meu Papai?<br /> 
+                      <img src="./assets/img/quem_e_o_papai.png" alt="Quem é o Papai?" class="img-rounded">
+                  </h1>
                 </div>
                 <!-- /header -->
 
@@ -214,7 +220,7 @@ include_once './pais.php';
         </div>
     </div>
                         <div style="height: 800px;">
-                            
+                            teste
                         </div>        
 </body>
 </html>
