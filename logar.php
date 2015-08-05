@@ -1,7 +1,6 @@
 <?php 
 session_start();
 $email = trim(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL));
-$matricula = trim(filter_input(INPUT_POST, 'matricula', FILTER_SANITIZE_STRING));
 
 $professor = array(
     array(
@@ -395,10 +394,6 @@ if (strlen($email) < 1) {
     $error[] = 'E-mail inválido';
 }
 
-//verifica matricula
-if (strlen($matricula) != 7) {
-    $error[] = 'A matrícula deve ter 7 digitos (somente números)';
-}
 
 //verifica se já votou
 if (count($error) == 0) {

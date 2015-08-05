@@ -93,6 +93,7 @@ include_once './pais.php';
         </div>
     </div>-->
 
+
     <div class="container">
         <div class="row">
             <div class=" col-xs-12 col-md-2 col-lg-2"></div>
@@ -125,14 +126,6 @@ include_once './pais.php';
                                     <input type="text" class="form-control" id="email" placeholder="Ex: email@email.com.br" value="joao@email.com" autofocus >
                                 </div>
                             </div>
-
-                            <div class="form-group ">
-                                <label for="matricula" class="col-sm-2 control-label">Matricula</label>
-                                <div class="col-sm-10 ">
-                                    <input type="text" class="form-control" id="matricula" placeholder="Ex: 123456-7" value="1111111" maxlength="7"   pattern="[0-9]{7}" required >
-                                </div>
-                            </div>
-
                             <div class="form-group">
                                 <label for="btn" class="col-sm-2 control-label"></label>
                                 <div class="col-sm-3 col-xs-12">
@@ -204,7 +197,7 @@ include_once './pais.php';
                                         </p>
                                         <br>
                                         <p>
-                                            <a  class="btn btn-default  col-xs-12 col-sm-12" id="btnNao" role="button">Não, vou conferir!</a>
+                                            <a  class="btn btn-lg btn-warning  col-xs-12 col-sm-12" id="btnNao" role="button"><strong>Não, vou conferir!</strong></a>
                                         </p>
                                       </div>
                                     </div>

@@ -30,7 +30,7 @@ $ip = kh_getUserIP();
 include_once './filhos.php';
 
 //valida os campos
-for ($i=1;$i<17;$i++) {
+for ($i=1;$i< count($filhos);$i++) {
     $filho = 'filho' .$i;
     if (!isset($_POST[$filho]) || strlen($_POST[$filho]) < 1) {
         $error[] = "Você não selecionou o pai para o Filho " . $i;
@@ -87,25 +87,53 @@ if (count($error)>= 1) {
         }
 ?>
                     <div class="text-center" style="margin-bottom: 5em">
-                        <h1 style="font-size: 10em; color: #ff3333">
+                        <h1 style="font-size: 7em; color: #ff3333">
+                            Feliz Dia dos Pais!
+                        </h1>
                             <?php
                                 if ($cont < 10) {
-                                    echo 'Que pena!';
                                     echo '<img src="./assets/img/alvo.jpg" alt="">';
                                 } else {
-                                    echo 'Parabéns!';
                                     echo '<img src="./assets/img/ranking.png" alt="">';
                                 }
                             ?>
-                        </h1>
                         
-                        <h2 style="font-size: 3em; color: #008000;">Você teve  <?=$cont?> acerto(s) </h2>
                         
+                        <h2 style="font-size: 4em; color: #008000;">Você teve  <?=$cont;?> acerto(s) </h2>
+                        <h2 style="font-size: 3em; color: #122b40;">Obrigado pela participação</h2>
                         <br>
+                        <h4>GID - <em> Grupo Interdisciplinar de Desenvolvimento</em></h4>
+                        
                                 <br>
                                 <br>
                                 <br>
                                 <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>                                
                         
                     </div>
 <?php
