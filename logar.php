@@ -401,28 +401,28 @@ if (strlen($matricula) != 7) {
 }
 
 //verifica se já votou
-//if (count($error) == 0) {
-//    $arquivo = fopen('palpites.csv','r');
-//    if ($arquivo == false) die('Não foi possível abrir o arquivo.');
-//    $i = 1;
-//    while(true) {
-//            $linha = fgets($arquivo);
-//
-//            //verfica o final do arquivo
-//            if ($linha==null) {
-//                break;
-//            }
-//            if($i > 1) {
-//                $l = explode(';', $linha);
-//                
-//                if ($email == $l[0]) {
-//                    $error[] = 'Você já participou!';
-//                }
-//            }
-//            $i++;
-//    }
-//    fclose($arquivo);    
-//}
+if (count($error) == 0) {
+    $arquivo = fopen('palpites.csv','r');
+    if ($arquivo == false) die('Não foi possível abrir o arquivo.');
+    $i = 1;
+    while(true) {
+            $linha = fgets($arquivo);
+
+            //verfica o final do arquivo
+            if ($linha==null) {
+                break;
+            }
+            if($i > 1) {
+                $l = explode(';', $linha);
+                
+                if ($email == $l[0]) {
+                    $error[] = 'Você já participou!';
+                }
+            }
+            $i++;
+    }
+    fclose($arquivo);    
+}
 
 
 
@@ -435,12 +435,14 @@ if (count($error) > 0) {
 } else {
     $login = false;
     $nome = NULL;
-    foreach ($professor as $key ) {
-        if (in_array($email, $key) && in_array($matricula, $key)) {
+    
+//autenticação baseada no array professor
+//    foreach ($professor as $key ) {
+//        if (in_array($email, $key) && in_array($matricula, $key)) {
             $login = true;
-            $nome = $key['nome'];
-        }
-    }
+//            $nome = $key['nome'];
+//        }
+//    }
     
     if ($login) {
         $_SESSION['email'] = $email;

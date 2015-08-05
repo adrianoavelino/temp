@@ -38,24 +38,24 @@ for ($i=1;$i<17;$i++) {
 }
 
 //verifica se o usuário já votou
-//if (count($error) == 0) {
-//    $arquivo = fopen('palpites.csv','r');
-//    if ($arquivo == false) die('Não foi possível abrir o arquivo.');
-//    while(true) {
-//        $linha = fgets($arquivo);
-//
-//        //verfica o final do arquivo
-//        if ($linha==null) {
-//            break;
-//        }
-//
-//        $l = explode(';', $linha);
-//        if ($_SESSION['email'] == $l[0]) {
-//            $error[] = 'Você já deu o seu palpite!';
-//        }
-//    }
-//    fclose($arquivo);
-//}
+if (count($error) == 0) {
+    $arquivo = fopen('palpites.csv','r');
+    if ($arquivo == false) die('Não foi possível abrir o arquivo.');
+    while(true) {
+        $linha = fgets($arquivo);
+
+        //verfica o final do arquivo
+        if ($linha==null) {
+            break;
+        }
+
+        $l = explode(';', $linha);
+        if ($_SESSION['email'] == $l[0]) {
+            $error[] = 'Você já deu o seu palpite!';
+        }
+    }
+    fclose($arquivo);
+}
 
 if (count($error)>= 1) {
     echo "<div class='alert alert-danger'>";
@@ -85,10 +85,30 @@ if (count($error)>= 1) {
 	if (!fwrite($arquivo, "\n" .$palpite)) {
             die('Não foi possível atualizar o arquivo.');
         }
-        echo "<div class='alert alert-success'>";
-        echo "Palpite enviado com sucesso!<br />";
-        echo "Você teve " . "<strong>" . $cont . "</strong> acerto(s)" ;
-        echo "</div>";
+?>
+                    <div class="text-center" style="margin-bottom: 5em">
+                        <h1 style="font-size: 10em; color: #ff3333">
+                            <?php
+                                if ($cont < 10) {
+                                    echo 'Que pena!';
+                                    echo '<img src="./assets/img/alvo.jpg" alt="">';
+                                } else {
+                                    echo 'Parabéns!';
+                                    echo '<img src="./assets/img/ranking.png" alt="">';
+                                }
+                            ?>
+                        </h1>
+                        
+                        <h2 style="font-size: 3em; color: #008000;">Você teve  <?=$cont?> acerto(s) </h2>
+                        
+                        <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                        
+                    </div>
+<?php
 	fclose($arquivo);
     }
 

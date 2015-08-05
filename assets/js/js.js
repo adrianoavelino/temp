@@ -82,10 +82,10 @@ $(function(){
       $.post('palpitar.php',filhos, function(data) {
           $("#msg").html(data).hide().fadeIn();
           ($("#msg .alert-success").length == 1?$("input, select").attr("disabled", true):'');
-          fazerScroll2($("body").position().top,700, function(){
+          fazerScroll2($("#msg").position().top,700, function(){
 
               if (isComplete()) {
-                  $("#formFilho").fadeOut(3000);
+                  $("#formFilho").fadeOut(2000);
               }
 
           });
@@ -105,7 +105,35 @@ $(function(){
     console.log(filho);
     
     //verifica se é o ultimo filho | questiona o envio
-    (filho === 'filho18' || isComplete())? fazerScroll2($("#theEnd").show().position().top,800, function(){}): fazerScroll2(posicao,800, teste);
+//    (filho === 'filho18' || isComplete())? fazerScroll2($("#theEnd").show().position().top,800, function(){}): fazerScroll2(posicao,800, teste);
+
+if (isComplete()) {
+    fazerScroll2($("#theEnd").fadeIn().position().top,800, function(){});
+}else {
+//    fazerScroll2(posicao,800, teste);
+
+var select = $('select');
+var tamanho = select.length;
+for(var i = 0; i < tamanho; i++){
+  if (select[i].value == '') {
+   var filho = "#filho" +(i+1);
+   var posicao = $(filho).parent().parent().parent().position().top;
+
+   var fun = function(){
+       return $(filho).select2('open');
+   };
+   
+   fazerScroll2(posicao,800, fun);
+ 
+   
+
+   break;
+
+  }
+}    
+    
+}
+ 
     
 
     });
@@ -116,9 +144,10 @@ $(function(){
        $("#" + filho).select2('open');
     });
     
+    var s = function(){$("#filho1").select2('open');};
     $("#btnNao").on('click', function(){
-      fazerScroll2($("#filho1").position().top,800);
-      $("#filho1").select2('open');
+      fazerScroll2($("#game").position().top,1000,s );
+      
     });
 
   });
