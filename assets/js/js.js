@@ -1,8 +1,6 @@
 
 function func() {}
 
-
-
 var isComplete = function(){
     var arr = [];
      $("#formFilho select").each(function(elemento){
@@ -113,10 +111,8 @@ $(function(){
 //    (filho === 'filho18' || isComplete())? fazerScroll2($("#theEnd").show().position().top,800, function(){}): fazerScroll2(posicao,800, teste);
 
       if (isComplete() && conf) {
-          fazerScroll2($("#theEnd").fadeIn().position().top,800, function(){});
-          
+          fazerScroll2($("#theEnd").fadeIn(1500).position().top,800, function(){});
       }else {
-        //    fazerScroll2(posicao,800, teste);
         var select = $('select');
         var tamanho = select.length;
         for(var i = 0; i < tamanho; i++){
@@ -144,9 +140,7 @@ $(function(){
     var s = function(){$("#filho1").select2('open');};
     $("#btnNao").on('click', function(){
       fazerScroll2($("#game").position().top,1000,s );
-//      isConferred.toogle();
       conf = false;
-      
     });
 
   });

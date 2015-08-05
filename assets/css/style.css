@@ -1,0 +1,57 @@
+#btn_palpitar{
+    margin-bottom: 1em;
+}
+
+.thumbnail {
+border: 0;
+}
+.form-horizontal{
+    padding: 1em;
+}
+
+.page-header{
+    margin: auto auto -1.3em;
+    text-align: center;
+}
+
+.filhos .row{
+    margin-bottom: 20px;
+} 
+
+
+#game {
+    margin-bottom: 40em;
+}
+/*sm*/
+@media (min-width: 768px) and (max-width: 992px) {
+    /*body{background-color: pink;}*/
+    .lbl-vertical-align { margin-top: 6em;}
+    .div-vertical-align {top: 5em;}
+    .text-align {text-align: center;}
+    /*.filhos { padding-top: 10em; }*/
+}
+
+/*md*/
+@media (min-width: 992px) and (max-width: 1200px) {
+    /*body{background-color: red;}*/
+    .lbl-vertical-align { margin-top: 6em; right: -1em;}
+    .div-vertical-align {top: 5em; left: -1em;}
+    .text-align {text-align: right;}
+    /*.filhos { padding-top: 2em;}*/
+}
+
+/*xs*/
+@media (max-width: 768px) {
+    /*body{background-color: green;}*/
+    .text-align {text-align: center;}
+    .filhos { margin-top: 2em;}
+}
+
+/*lg*/
+@media (min-width: 1200px) {
+    /*body {background-color: yellow;}*/
+    .lbl-vertical-align { margin-top: 6em; float: right !important;}
+    .div-vertical-align {top: 5em; left: -1em;}
+    .text-align {text-align: center;}
+    /*.filhos { padding-top: 22em;}*/
+}
