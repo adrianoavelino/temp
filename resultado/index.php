@@ -98,7 +98,6 @@ $(function () {
                                 </tr>
                             </thead>
                             <tbody>
-                
 <?php
 
     $arquivo = fopen('../palpites.csv','r');
