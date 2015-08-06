@@ -35,15 +35,12 @@ include_once './pais.php';
 -->
 
 <?php
-setlocale( LC_ALL, 'pt_BR', 'pt_BR.iso-8859-1', 'pt_BR.utf-8', 'portuguese' ); 
 date_default_timezone_set( 'America/Sao_Paulo' );
 $hoje = strftime('%d/%m/%Y');
-
 //echo 'hoje é ' . $hoje . ' horas: ' . strftime('%H:%M:%S');
-       
 
-//$encerramento = '11/08/2015';
-$encerramento = '07/08/2015';
+$encerramento = '11/08/2015';
+//$encerramento = '05/08/2015';
 
 ?>
 
@@ -54,6 +51,7 @@ $encerramento = '07/08/2015';
         </h1>
            <img src="./assets/img/stop.jpg" alt="" class="">
            <h2>O período de envio de respostas terminou</h2>
+           <h4>GID - <em> Grupo Interdisciplinar de Desenvolvimento</em></h4>
     </div>
     <?php exit; ?>
 <?php } ?>
@@ -97,7 +95,7 @@ $encerramento = '07/08/2015';
                             <div class="form-group ">
                                 <label for="email" class="col-sm-2 control-label">E-mail</label>
                                 <div class="col-sm-10 ">
-                                    <input type="text" class="form-control" id="email" placeholder="Ex: email@email.com.br" value="joao@email.com" autofocus >
+                                    <input type="text" class="form-control" id="email" placeholder="Ex: email@email.com.br" value="" autofocus >
                                 </div>
                             </div>
                             <div class="form-group">
@@ -119,6 +117,7 @@ $encerramento = '07/08/2015';
                 <form class="form-horizontal" id="formFilho" method="post">
                     
                     <!-- game -->
+                    <input type="hidden" id="name_hidden" name="name_hidden">
                     <div id="game" class="form-horizontal">
 
                         <?php   foreach ($filhos as $key => $filho) { ?>

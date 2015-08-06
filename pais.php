@@ -16,5 +16,7 @@ $pais = array(
     "Luciano Kenji Tanaka",
     "Ronaldo Pavarini",
     "João Vicente",
+    "Fabio Yamamoto",
+    "Vilmar Antonio Rodrigues"
 );
 

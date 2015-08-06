@@ -62,6 +62,7 @@ $(function(){
           
           //exibe o e-mail do usuário atual na tela de identificação
           $(".identificacao").html("<strong>E-mail:</strong> " + email );
+          $("#name_hidden").val(email);
 
         } else {
           $("#msgLogin").html(data).hide().fadeIn();
@@ -133,7 +134,7 @@ $(function(){
     });
     
     $("#btnNao").on('click', function(){
-      fazerScroll($("#game").position().top,1000, getFirstFocus );
+      fazerScroll($("#game").position().top,1000);
       conf = false;
     });
 

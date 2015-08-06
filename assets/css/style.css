@@ -36,7 +36,7 @@ border: 0;
     /*body{background-color: red;}*/
     .lbl-vertical-align { margin-top: 6em; right: -1em;}
     .div-vertical-align {top: 5em; left: -1em;}
-    .text-align {text-align: right;}
+    .text-align {text-align: center;}
     /*.filhos { padding-top: 2em;}*/
 }
 

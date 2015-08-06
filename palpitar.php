@@ -2,6 +2,8 @@
 
 session_start();
 
+
+
 /**
  * Verifica o IP do usuário verificando o proxy
  * @return string
@@ -23,7 +25,9 @@ function kh_getUserIP(){
 }
     
 $error = array();
-$palpite = $_SESSION['email'] . ';';//dados dos usuários que já palpitaram que será inserido no arquivo
+// trim(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL));
+//$palpite = trim(filter_input(INPUT_POST, 'name_hidden', FILTER_SANITIZE_EMAIL));//dados dos usuários que já palpitaram que será inserido no arquivo
+$palpite = '';
 $ip = kh_getUserIP();
 
 include_once './filhos.php';
