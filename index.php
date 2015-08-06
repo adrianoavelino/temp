@@ -61,7 +61,7 @@ include_once './pais.php';
                     <div class="panel-heading">Identificação de usuário</div>
                     <div class="panel-body">
                         <div class="identificacao"></div>
-                        <form class="form-horizontal" id="formIdentificacao" method="post" action="javascript:func()">
+                        <form class="form-horizontal" id="formIdentificacao" method="post">
                             <div class="form-group">
                                 <label for="email" class="col-sm-2 control-label"></label>
                                 <div class="col-sm-10">
@@ -90,7 +90,7 @@ include_once './pais.php';
                 <!-- /mensagem de erro -->
                 
                 <!-- formulario -->
-                <form action="javascript: func()" method="post" id="formFilho" class="form-horizontal">
+                <form class="form-horizontal" id="formFilho" method="post">
                     
                     <!-- game -->
                     <div id="game" class="form-horizontal">

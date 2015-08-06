@@ -45,6 +45,7 @@ if (count($error) > 0) {
     }
     echo "</div>";
 } else {
+    $_SESSION['email'] = $email;
     echo '1';
 }
 

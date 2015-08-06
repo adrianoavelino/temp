@@ -2,7 +2,6 @@
 
 session_start();
 
-
 /**
  * Verifica o IP do usuário verificando o proxy
  * @return string
@@ -69,12 +68,14 @@ if (count($error)>= 1) {
     foreach ($_POST as $resposta => $value) {
 //        echo $resposta;  //chave
 //        echo $value; //valor
+        
         foreach ($filhos as $filho) {
             if ($filho['pai'] ==  $value && $filho['id'] == $resposta) {
                 $cont++;
             }            
-            $palpite .= trim(filter_input(INPUT_POST, $filho['id'], FILTER_SANITIZE_STRING)) . ';';
         }
+        
+        $palpite .= $value . ';';
 
     }
 

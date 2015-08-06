@@ -1,9 +1,10 @@
-
-function func() {}
-
+/**
+ * Verifica se todos os campos foram preenchidos
+ * @returns {Boolean}
+ */
 var isComplete = function(){
     var arr = [];
-     $("#formFilho select").each(function(elemento){
+     $("#formFilho select").each(function(){
       arr.push(this.value);
     });
 
@@ -11,42 +12,40 @@ var isComplete = function(){
       return !!elemento;
     })
     return r;
-
 }
 
-var fazerScroll2 = function (pos, speedy, funcao) {
+var fazerScroll = function (pos, speedy, funcao) {
   var speedy = speedy || 100;
-  var body = $("html, body");
+  var _body = $("html, body");
   var funcao = funcao || function(){};
-  body.stop().animate({scrollTop:pos}, speedy, 'swing', function(){
+  _body.stop().animate({scrollTop:pos}, speedy, 'swing', function(){
     funcao();
   });
 }
 
-function fazerScroll() {
 
-  var body = $("html, body");
-  body.stop().animate({scrollTop:0}, 1000, 'swing', function(){});
-}
 
 
 
 $(function(){
   
     var conf = true;
-    (window.innerWidth > 768)?'':$('.filhos').height(window.innerHeight);
+    $("#game").hide();
+//    (window.innerWidth > 768)?'':$('.filhos').height(window.innerHeight);
     $("#theEnd").hide();
+    var getFirstFocus = function(){
+      return $("select:first").select2('open');
+    };
 
     $('#game select').select2({
       language:'pt-BR',
         placeholder: "Quem é o meu Pai?"
-    //   placeholder: "Quem é o meu Pai?",
-    //   maximumSelectionLength: 1
     });
 
-    $("#game").hide();
 
-    $("#formIdentificacao").submit(function(){
+    $("#formIdentificacao").submit(function(event){
+      event.preventDefault();
+      
       var email = document.getElementById("email").value;
 
       $.post('logar.php',{email:email}, function(data) {
@@ -54,17 +53,14 @@ $(function(){
           $("#msgLogin").hide();
           $("#game").show();
           $("#formIdentificacao").slideUp(500, function(){
+            //focus no primeiro campo
 
-            var teste = function(){
-              return $("select:first").select2('open');
-            }
-            //testee
-            fazerScroll2($('.filhos:first').position().top,600, teste);
+            
+            fazerScroll($('.filhos:first').position().top,600, getFirstFocus);
 
-
-
-//            $("select:first").select2('open');
           });
+          
+          //exibe o e-mail do usuário atual na tela de identificação
           $(".identificacao").html("<strong>E-mail:</strong> " + email );
 
         } else {
@@ -74,58 +70,57 @@ $(function(){
       });
     });
 
-    $("#btn").click(function(){
-      $("#filho1").focus();
-    });
-
-    $("#formFilho").submit(function(){
-      document.getElementById('btn_palpitar').value = 'Aguarde ...';
+    //verifica os palpites do usuário
+    $("#formFilho").submit(function(event){
+      
+      
+      
+      document.getElementById('btn_palpitar').value = 'Aguarde ...'; //altera texto para informar que o processo ainda está em execução
       var filhos = $("#formFilho").serialize();
 
       $.post('palpitar.php',filhos, function(data) {
           $("#msg").html(data).hide().fadeIn();
           ($("#msg .alert-success").length == 1?$("input, select").attr("disabled", true):'');
-          fazerScroll2($("#msg").position().top,700, function(){
-
-              if (isComplete()) {
-                  $("#formFilho").fadeOut(2000);
-              }
-
+          
+          //exibe a resposta ao usuário
+          fazerScroll($("#msg").position().top,700, function(){
+            //esconde o formulário caso tenha todos os campos preenchidos
+            if (isComplete()) {
+              $("#formFilho").fadeOut(2000);
+            }
           });
-          document.getElementById('btn_palpitar').value = 'Palpitar';
+          document.getElementById('btn_palpitar').value = 'Palpitar'; //volta com o texto padrão do botão
       });
+      
+      event.preventDefault();
     });
 
+    //seleciona o próximo campo
     $("#game select").on('change', function(){
-
-      
       var regExp = /[a-zA-Z]/g;
       var id = $(this).attr('id');
       var filho = 'filho' + (+id.replace(regExp, "") + 1);
       var posicao = $(this).parent().parent().parent().next().position().top;
-      var teste = function(){
-          return ($("#" + filho).length == 1)?$("#" + filho).select2('open'):$("#btn_palpitar").focus();
-      };
     
-    //verifica se é o ultimo filho | questiona o envio
-//    (filho === 'filho18' || isComplete())? fazerScroll2($("#theEnd").show().position().top,800, function(){}): fazerScroll2(posicao,800, teste);
-
       if (isComplete() && conf) {
-          fazerScroll2($("#theEnd").fadeIn(1500).position().top,800, function(){});
+          fazerScroll($("#theEnd").fadeIn(1500).position().top,800);
       }else {
         var select = $('select');
         var tamanho = select.length;
+        var createFocus = function(seletor){
+          return function(){
+            $(seletor).select2('open');
+          };
+        };
+        
+        //abre o proximo select ou proximo não preenchido
         for(var i = 0; i < tamanho; i++){
-          if (select[i].value == '') {
+          if (select[i].value === '') {
            var filho = "#filho" +(i+1);
            var posicao = $(filho).parent().parent().parent().position().top;
-
-           var fun = function(){
-               return $(filho).select2('open');
-           };
-           fazerScroll2(posicao,800, fun);
+           var getFocus = createFocus(filho);
+           fazerScroll(posicao,800, getFocus);
            break;
-
           }
         }    
       }
@@ -137,27 +132,10 @@ $(function(){
        $("#" + filho).select2('open');
     });
     
-    var s = function(){$("#filho1").select2('open');};
     $("#btnNao").on('click', function(){
-      fazerScroll2($("#game").position().top,1000,s );
+      fazerScroll($("#game").position().top,1000, getFirstFocus );
       conf = false;
     });
 
   });
 
-//
-//var select = $('select');
-//var tamanho = select.length;
-//for(var i = 0; i < tamanho; i++){
-//  if (select[i].value == '') {
-//   var filho = "#filho" +(i+1);
-//   var posicao = $(filho).parent().parent().parent().position().top;
-//
-//   fazerScroll2(posicao,800);
-// 
-//   $(filho).select2('open');
-//
-//   break;
-//
-//  }
-//}
