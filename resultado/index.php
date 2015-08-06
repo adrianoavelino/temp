@@ -20,7 +20,7 @@ $(function () {
 
     
 
-    <div class="row responsive-utilities-test visible-on" style="position: fixed; top: 0; right: 0; z-index: 1030; width: 100px; height: 100px;">
+<!--    <div class="row responsive-utilities-test visible-on" style="position: fixed; top: 0; right: 0; z-index: 1030; width: 100px; height: 100px;">
         <div class="">
           <span class="visible-xs-block bg-danger">✔ XS x-small</span>
         </div>
@@ -33,71 +33,41 @@ $(function () {
         <div class="">
           <span class="visible-lg-block  bg-warning">✔ LG on large</span>
         </div>
-    </div>
+    </div>-->
 
 
     <!-- container -->
-    <div class="container">
+    <div style="padding: 2em;">
+        <h1>Resultado</h1>
         
         <!-- row -->
         <div class="row">
-            
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-  Launch demo modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-                
-
-                                
-
-                        <table class="table table-bordered table-hover table-striped" width="100%">
-                            <thead>
-                                <tr>
-                                    <th>Pai</th>
-                                    <th>Filho1 <br> Santiago</th>
-                                    <th>Filho2 <br> Luis Cládio</th>
-                                    <th>Filho3 <br> Eduardo</th>
-                                    <th>Filho4 <br> Emerson</th>
-                                    <th>Filho5<br> Cristiano</th>
-                                    <th>Filho6<br> Denis</th>
-                                    <th>Filho7  <br> Joaquim</th>
-                                    <th>Filho8  <br> Rafael</th>
-                                    <th>Filho9  <br> Santiago</th>
-                                    <th>Filho10 <br> Marcelo Mathias</th>
-                                    <th>Filho11 <br> Marcelo Ferraz</th>
-                                    <th>Filho12 <br> Domingos</th>
-                                    <th>Filho13 <br> Odirle</th>
-                                    <th>Filho14 <br> Luciano</th>
-                                    <th>Filho15 <br> Emerson</th>
-                                    <th>Filho16 <br> Ronaldo</th>
-                                    <th>Filho17 <br> João Vicentes</th>
-                                    <th>Acertos</th>
-                                    <th>IP</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+            <table class="table table-bordered table-hover table-striped" width="100%">
+                <thead>
+                    <tr>
+                        <th>Pai</th>
+                        <th>Filho1 <br> Santiago</th>
+                        <th>Filho2 <br> Luis Cládio</th>
+                        <th>Filho3 <br> Eduardo</th>
+                        <th>Filho4 <br> Emerson</th>
+                        <th>Filho5<br> Cristiano</th>
+                        <th>Filho6<br> Denis</th>
+                        <th>Filho7  <br> Joaquim</th>
+                        <th>Filho8  <br> Rafael</th>
+                        <th>Filho9  <br> Santiago</th>
+                        <th>Filho10 <br> Marcelo Mathias</th>
+                        <th>Filho11 <br> Marcelo Ferraz</th>
+                        <th>Filho12 <br> Domingos</th>
+                        <th>Filho13 <br> Odirle</th>
+                        <th>Filho14 <br> Luciano</th>
+                        <th>Filho15 <br> Emerson</th>
+                        <th>Filho16 <br> Ronaldo</th>
+                        <th>Filho17 <br> João Vicentes</th>
+                        <th>Acertos</th>
+                        <th>IP</th>
+                    </tr>
+                </thead>
+                <tbody>
 <?php
 
     $arquivo = fopen('../palpites.csv','r');
@@ -146,17 +116,8 @@ $(function () {
     fclose($arquivo);
 
 ?>
-                            </tbody>                            
-                        </table>                
-    
-                
-                
-                
-               
-
-            
-
-            
+                </tbody>                            
+            </table>                
         </div>
         <!-- /row -->
         

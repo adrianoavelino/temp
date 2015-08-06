@@ -34,6 +34,32 @@ include_once './pais.php';
     </div>
 -->
 
+<?php
+setlocale( LC_ALL, 'pt_BR', 'pt_BR.iso-8859-1', 'pt_BR.utf-8', 'portuguese' ); 
+date_default_timezone_set( 'America/Sao_Paulo' );
+$hoje = strftime('%d/%m/%Y');
+
+//echo 'hoje é ' . $hoje . ' horas: ' . strftime('%H:%M:%S');
+       
+
+//$encerramento = '11/08/2015';
+$encerramento = '07/08/2015';
+
+?>
+
+<?php if ($hoje >= $encerramento){ ?>
+    <div class="text-center" style="margin-bottom: 5em">
+        <h1 style="font-size: 7em; color: #ff3333">
+            Encerrado!
+        </h1>
+           <img src="./assets/img/stop.jpg" alt="" class="">
+           <h2>O período de envio de respostas terminou</h2>
+    </div>
+    <?php exit; ?>
+<?php } ?>
+
+
+
     <!-- container -->
     <div class="container">
         
